@@ -23,8 +23,11 @@ Backend:
 ## How does it go right now?
 
 Badly, but only timewise. The moments I can spend on it and tinker away is a blast as I am learning a lot.
+I think I finally understood the backend a bit better than when I followed a curriculum on the backend that was just based on node.js.
+The security and lying around environment variables leave a lot to be desired, but I will deal with them in due time as they do not contain any sensible information.
+For now it should be a proof of concept and just to test it.
 
-## I know it's not production ready, but I want to test it
+## I know it's not production ready, but I want to test it regardless the state
 
 + Get yourself an api tester/design suite like postman or insomnia. Curl works too if you know how to use it.
   + the root folder has an exported collection you can import called `Todo-api.postman_collection.json` to test
@@ -55,6 +58,23 @@ Badly, but only timewise. The moments I can spend on it and tinker away is a bla
      + username(not empty), password (hashed, saltlength is 16)
      + Post method
      + Please take in mind, that this is not finished yet, security might be compromised if you simply take this and don't refactor it. 
++ To see the results after calling these apis, try these steps and make sure the dev-db container we created with docker-compose is running:
+  + Open a terminal
+  + Enter `docker exec -it todo-api-dev-db-1 bash`
+    + You will be getting something like this in return:
+      + `root@f44ae9afa4c8:/#`, you are in the terminal of the image now
+  + Enter `psql -U postgres nest`
+    + -U stands for username, which is postgres here
+    + nest afterwards is for the database in postgres
+      + `nest=#` should be shown in your terminal prompt
+  + `\dt` shows you the tables in the database
+  + `select * from todos;` should return you the todos.
+    + do NOT forget the `;` it signals the end of your prompt or query.
+  + To leave the psql terminal, enter `exit`.
+  + To leave the docker terminal, enter `exit`
+    + if this doesn't wok, enter `CTRL + D`, works almost everytime.
+
+
 ## User stories
 
 User stories will be added, modified, crossed out for completion:
