@@ -96,15 +96,16 @@ Backend:
 + Get to the frontend -> WIP
 
 
-## List of problems i enountered:
+## List of problems I enountered:
 
 The usual problem of thinking how easy a project can be, but forget that it might contain very new, somewhat foreign concepts to you.
 
-I am currently going through a video tutorial for a crud app, which I will adapt to the current project when I think I have done enough. As time went on, I realized that I needed a more basic approach as I got slapped left and right just trying to follow it.
+I was currently going through a video tutorial for a crud app, which I would and extend, deviate from it for my own needs. As time went on, I realized that I needed a more basic approach as I got overwhelmed by the sheer information I got from it.
 
-Then I found a tutorial that was divided by several parts and smaller scope that made me decid to use it as a learning experience to the backend and template as I tried to do things a bit differently by using a docker container for a sql database and small changes I'd like to see as foundation as I get more knowledgable.
+Tried to stay on it, repeatedly. I just didn't get it. 
+I needed a more basic approach as I also read the docs as time permitted.
 
-
+Then I found a tutorial that was divided by several parts and a much smaller scope that made me decide to use it as a learning experience to the backend and template as I tried to do things a bit differently by using a docker container for a sql database and small changes I'd like to see as foundation as I get more knowledgable.
 
 ## thoughts while learning the previous Tutorial(s):
 
