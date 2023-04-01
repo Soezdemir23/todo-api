@@ -1,3 +1,4 @@
+import { UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ExtractJwt, Strategy } from 'passport-jwt';
@@ -12,5 +13,13 @@ export class JwtCustomStrategy extends PassportStrategy(Strategy) {
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       secretOrKey: jwtSecret,
     });
+  }
+
+  async validate(payload: { username: string }) {
+    const { username } = payload;
+    const user = await this.repo.findOne({ where: { username } });
+    // i will never get used to this. I always am never sure about the return value
+    if (!user) throw new UnauthorizedException();
+    return user;
   }
 }
