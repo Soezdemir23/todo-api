@@ -8,6 +8,8 @@ import {
   Post,
   ValidationPipe,
 } from '@nestjs/common';
+import { UseGuards } from '@nestjs/common/decorators';
+import { AuthGuard } from '@nestjs/passport';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { TodoStatus } from './entity/todo.entity';
 import { TodoStatusValidationPipe } from './pipes/TodoStatusValidation.pipe';
@@ -15,6 +17,8 @@ import { TodoService } from './todo.service';
 
 // http://localhost:3000/api/todos
 @Controller('todos')
+// Need to learn about Using Guards and Authguard
+@UseGuards(AuthGuard())
 export class TodoController {
   constructor(private todoService: TodoService) {}
 
