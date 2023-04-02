@@ -10,7 +10,7 @@ import { PassportModule } from '@nestjs/passport';
   imports: [
     TypeOrmModule.forFeature([UserEntity]),
     JwtModule.register({
-      secret: crypto.randomUUID(),
+      secret: jwtSecret,
       signOptions: {
         algorithm: 'HS512',
         expiresIn: '1d',
