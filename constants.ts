@@ -1,1 +1,0 @@
-const jwtSecret = crypto.randomUUID();
