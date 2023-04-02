@@ -12,10 +12,11 @@ export class TodoStatusValidationPipe implements PipeTransform {
     TodoStatus.DONE,
   ];
 
-  transform(value: any, metadata: ArgumentMetadata): any {
+  transform(value: string, metadata: ArgumentMetadata): any {
     console.log('the value: ', value, ' , the type of value: ', typeof value);
     // the value here seems to be an array of strings. HOW come?
-    value = value[1].toUpperCase();
+    // because i passed TWO arguments in the body of the request with the same key.
+    value = value.toUpperCase();
 
     if (!this.isStatusValid(value)) {
       throw new BadRequestException(`"${value}" is an invalid status`);
