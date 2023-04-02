@@ -1,5 +1,14 @@
 # Test-Application
 
+## **EDIT**
+The current master branch stays as is. The reason is simply that my time was up. 
+
+I created a branch called *master-after-timed-effort*, where the rest is going to be continuisly merged with the branches as I progress.
+
+Really love Nest.js and the easy tutorial allowing me to better understand the behind the curtains hands-on.
+
+## **EDIT END**
+
 This is a test for me to practice creating an application within a given timeframe.
 
 For now I decided for a Todo Application, again. This time it is a fullstack application.
