@@ -14,6 +14,7 @@ export class TodoStatusValidationPipe implements PipeTransform {
 
   transform(value: any, metadata: ArgumentMetadata): any {
     console.log('the value: ', value, ' , the type of value: ', typeof value);
+    // the value here seems to be an array of strings. HOW come?
     value = value[1].toUpperCase();
 
     if (!this.isStatusValid(value)) {
