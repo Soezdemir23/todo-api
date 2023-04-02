@@ -73,4 +73,8 @@ export class AuthService {
       );
     }
   }
+
+  async getUsers() {
+    return this.userRepo.find();
+  }
 }

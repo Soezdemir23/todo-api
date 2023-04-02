@@ -1,4 +1,4 @@
-import { Body, Controller, Post, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Post, ValidationPipe } from '@nestjs/common';
 import { RegisteredUserDTO } from 'src/User/dto/user.dto';
 import { AuthService } from './auth.service';
 import { UserLoginDTO } from './dto/userLogin.dto';
@@ -6,6 +6,11 @@ import { UserLoginDTO } from './dto/userLogin.dto';
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
+  // test to see how many users are in the database
+  @Get('users')
+  getUsers() {
+    return this.authService.getUsers();
+  }
 
   @Post('register')
   registration(@Body(ValidationPipe) reqDTO: RegisteredUserDTO) {
