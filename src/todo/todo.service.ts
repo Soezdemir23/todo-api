@@ -1,4 +1,8 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserEntity } from 'src/User/Entity/user.entity';
 import { Repository } from 'typeorm';
@@ -10,9 +14,17 @@ export class TodoService {
   constructor(
     @InjectRepository(TodoEntity) private todoRepo: Repository<TodoEntity>,
   ) {}
-
+  // let's try building a query
   async getAllTodos(user: UserEntity) {
-    return await this.todoRepo.find({ where: { user } });
+    const query = this.todoRepo.createQueryBuilder('todo');
+
+    query.where('todo.userId = :userId', { userId: user.id });
+
+    try {
+      return await query.getMany();
+    } catch (error) {
+      throw new NotFoundException('No todo found!');
+    }
   }
 
   async createNewTodo(createToDTO: CreateTodoDto) {
