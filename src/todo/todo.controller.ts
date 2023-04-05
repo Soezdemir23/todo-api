@@ -10,6 +10,8 @@ import {
 } from '@nestjs/common';
 import { UseGuards } from '@nestjs/common/decorators';
 import { AuthGuard } from '@nestjs/passport';
+import { User } from 'src/auth/user.decorator';
+import { UserEntity } from 'src/User/Entity/user.entity';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { TodoStatus } from './entity/todo.entity';
 import { TodoStatusValidationPipe } from './pipes/TodoStatusValidation.pipe';
@@ -23,11 +25,9 @@ export class TodoController {
   constructor(private todoService: TodoService) {}
 
   @Get()
-  getAllTodos() {
-    return this.todoService.getAllTodos();
+  getAllTodos(@User() user: UserEntity) {
+    return this.todoService.getAllTodos(user);
   }
-
-  // get the data from the
 
   @Post()
   createNewTodo(@Body(ValidationPipe) data: CreateTodoDto) {

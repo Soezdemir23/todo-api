@@ -1,5 +1,6 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { UserEntity } from 'src/User/Entity/user.entity';
 import { Repository } from 'typeorm';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { TodoEntity, TodoStatus } from './entity/todo.entity';
@@ -10,8 +11,8 @@ export class TodoService {
     @InjectRepository(TodoEntity) private todoRepo: Repository<TodoEntity>,
   ) {}
 
-  async getAllTodos() {
-    return await this.todoRepo.find();
+  async getAllTodos(user: UserEntity) {
+    return await this.todoRepo.find({ where: { user } });
   }
 
   async createNewTodo(createToDTO: CreateTodoDto) {
