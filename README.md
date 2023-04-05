@@ -150,3 +150,4 @@ Then I found a tutorial that was divided by several parts and a much smaller sco
 + I.... didn't commit the code correctly.... that's a bummer.
   + I will "finish" this part of the application, push it and then try to continue working on it more meticulously.
 
++ Oh boy oh boy, The postman has some nifty comments section I can use to at least save some dummy accounts. COOL
