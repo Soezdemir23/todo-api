@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { UserEntity } from 'src/User/Entity/user.entity';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 
 @Entity('todos')
 export class TodoEntity {
@@ -19,6 +20,13 @@ export class TodoEntity {
 
   @Column()
   date: Date;
+
+  // one user can have many todos, but one todo can only have one user
+  @ManyToOne(() => UserEntity, (user) => user.todos)
+  user: UserEntity;
+
+  @Column()
+  userId: number;
 }
 
 export enum TodoStatus {
