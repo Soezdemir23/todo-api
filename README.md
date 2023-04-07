@@ -9,6 +9,8 @@ These are my initial thoughts on technology being considered:
 Frontend:
 
 + React, since I have enough experience working with it already.
+  + Decided to build it first on Angular to practice it better.
+  + Adding 
 + TypeScript, because I enjoy knowing what I need for a function and can expect back in return at the very least and it tends to not blow up in face when deployed.
 + TailwindCSS, the utility classes and mobile first approach allows me to quickly iterate on the screen sizes and design. ONE caveat: 
   + The extra and the modified screen size settings didn't work well with VITE and they are still working on it.
