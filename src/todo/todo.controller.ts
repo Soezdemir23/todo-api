@@ -30,21 +30,34 @@ export class TodoController {
   }
 
   @Post()
-  createNewTodo(@Body(ValidationPipe) data: CreateTodoDto) {
-    return this.todoService.createNewTodo(data);
+  createNewTodo(
+    @Body(ValidationPipe) data: CreateTodoDto,
+    @User() user: UserEntity,
+  ) {
+    return this.todoService.createNewTodo(data, user);
   }
 
   @Patch(':id')
   updateTodo(
     @Body('status', TodoStatusValidationPipe) status: TodoStatus,
     @Body('notes') notes: string,
+    @Body('title') title: string,
+    @Body('description') description: string,
     @Param('id') id: number,
+    @User() user: UserEntity,
   ) {
-    return this.todoService.updateTodo(id, status, notes);
+    return this.todoService.updateTodo(
+      id,
+      status,
+      notes,
+      title,
+      description,
+      user,
+    );
   }
 
   @Delete(':id')
-  deleteTodo(@Param('id') id: number) {
-    return this.todoService.deleteTodoById(id);
+  deleteTodo(@Param('id') id: number, @User() user: UserEntity) {
+    return this.todoService.deleteTodoById(id, user);
   }
 }

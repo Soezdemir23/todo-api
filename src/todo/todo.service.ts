@@ -27,13 +27,15 @@ export class TodoService {
     }
   }
 
-  async createNewTodo(createToDTO: CreateTodoDto) {
+  async createNewTodo(createToDTO: CreateTodoDto, user: UserEntity) {
     const todo = new TodoEntity();
     const { title, description } = createToDTO;
     todo.title = title;
     todo.description = description;
     todo.status = TodoStatus.OPEN;
     todo.date = new Date();
+    todo.userId = user.id;
+
     this.todoRepo.create(todo);
     try {
       return await this.todoRepo.save(todo);
@@ -43,22 +45,31 @@ export class TodoService {
     }
   }
 
-  async updateTodo(id: number, status: TodoStatus, notes: string) {
+  async updateTodo(
+    id: number,
+    status: TodoStatus,
+    notes: string,
+    title: string,
+    description: string,
+    user: UserEntity,
+  ) {
     try {
-      this.todoRepo.update({ id }, { status, notes });
-      return this.todoRepo.findOneBy({ id });
+      await this.todoRepo.update(
+        { id },
+        { status, notes, title, description, userId: user.id },
+      );
+      return await this.todoRepo.findOne({ where: { id } });
     } catch (error) {
-      throw new InternalServerErrorException('Changing status failed');
+      throw new InternalServerErrorException('Changing todo failed');
     }
   }
 
-  async deleteTodoById(id: number) {
-    try {
-      return await this.todoRepo.delete({ id });
-    } catch (error) {
-      throw new InternalServerErrorException(
-        'Deleting todo with id: ' + id + 'failed',
-      );
+  async deleteTodoById(id: number, user: UserEntity) {
+    const result = await this.todoRepo.delete({ id, userId: user.id });
+    if (result.affected === 0) {
+      throw new NotFoundException('Todo with id: ' + id + ' not found');
+    } else {
+      return { success: true };
     }
   }
 }
