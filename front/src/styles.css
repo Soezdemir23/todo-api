@@ -4,22 +4,5 @@ html, body {
     height: 100%;
  
 }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;    display: flex;
-    flex-direction: column;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
 
-header {
-    
-    flex: 0;
-    height: 4em;
-    background-color: lightblue;
-}
-
-main {
-    flex: 1;
-}
-
-footer {
-    position:fixed;
-    bottom:0px;
-    flex: 0;
-}
