@@ -91,7 +91,7 @@ Backend:
 + move todos into another list -> not yet
 + some todos are required in multiple lists ->not yet
 + if I remove the todo, it's reference is removed from all lists. -> Not yet
-+ Authentication -> WIP
++ Authentication -> done
 + Assign the user the todos or lists of todos -> Not yet
 + Get to the frontend -> WIP
 
@@ -106,6 +106,8 @@ Tried to stay on it, repeatedly. I just didn't get it.
 I needed a more basic approach as I also read the docs as time permitted.
 
 Then I found a tutorial that was divided by several parts and a much smaller scope that made me decide to use it as a learning experience to the backend and template as I tried to do things a bit differently by using a docker container for a sql database and small changes I'd like to see as foundation as I get more knowledgable.
+
+Another problem I encounter while writing authentication and testing them with Postman or Insomnia is that you can 
 
 ## thoughts while learning the previous Tutorial(s):
 
