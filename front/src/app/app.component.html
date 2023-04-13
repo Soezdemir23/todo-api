@@ -1,5 +1,35 @@
-<div class="app-root">
-  <app-header [title]="title"></app-header>
-  <app-main></app-main>
-  <app-footer></app-footer>
+<mat-toolbar color="primary">
+  <div class="container d-flex t-header">
+    <span routerLink="/" style="cursor: pointer">Todo Maker</span>
+    <span class="spacer"></span>
+    <div
+      class="d-flex justify-content-around icons"
+      style="width: 100px"
+      *ngIf="showMenu"
+    >
+      <div class="d-flex align-items-center mr-2 px-2">
+        <span routerLink="/login">Login</span>
+        <mat-icon routerLink="/login">login</mat-icon>
+      </div>
+      |
+      <div class="d-flex align-items-center ml-2 px-2">
+        <span routerLink="/register">Register</span>
+        <mat-icon routerLink="/register">how_to_reg</mat-icon>
+      </div>
+    </div>
+
+    <div
+      class="d-flex justify-content-between icons align-items-center"
+      style="width: 130px"
+      *ngIf="!showMenu"
+    >
+      <div class="d-flex align-items-center mr-2 px-2">
+        <span class="px-1">Welcome User</span>
+        <mat-icon>exit_to_app</mat-icon>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>
+<div class="container py-3">
+  <router-outlet></router-outlet>
 </div>

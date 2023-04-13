@@ -17,7 +17,6 @@ import { MatCardModule } from '@angular/material/card';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MainComponent } from './main/main.component';
-import { Routes } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -25,8 +24,6 @@ import { RegisterComponent } from './register/register.component';
 import { TodoComponent } from './todo/todo.component';
 import { ToastrModule } from 'ngx-toastr';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
-const routes: Routes = [{ path: '/home', component: MainComponent }];
 
 @NgModule({
   declarations: [

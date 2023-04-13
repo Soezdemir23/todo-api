@@ -1,10 +1,6 @@
-.app-root {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+.spacer {
+    flex: 1 1 auto;
 }
-
-
-main {
-    flex: 1;
+.icons mat-icon, icons div {
+    cursor: pointer;
 }
