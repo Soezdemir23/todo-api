@@ -11,17 +11,15 @@ import { TodoComponent } from '../todo/todo.component';
 })
 export class HomeComponent {
   todos: any[] = [];
-  filteredTodos: any[] = [
-    { title: 'Test', description: 'Test description', status: 'OPEN' },
-  ];
+  filteredTodos: any[] = [];
 
   constructor(private apiService: ApiService, private dialog: MatDialog) {}
 
   ngOnInit() {
-    /* this.apiService.getTodos().subscribe((data: any[]) => {
-          this.todos = data;
-          this.filteredTodos = data;
-        });*/
+    this.apiService.getAllTodos().subscribe((data: any[]) => {
+      this.todos = data;
+      this.filteredTodos = data;
+    });
   }
 
   filterChanged(ev: MatSelectChange) {
@@ -43,33 +41,34 @@ export class HomeComponent {
       height: '500px',
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      /*this.apiService.createTodo(data.title, data.description).subscribe((data: any) => {
-        console.log(data);
-        this.todos.push(data);
-        this.filteredTodos = this.todos;
-      });*/
+    dialogRef.afterClosed().subscribe((data) => {
+      this.apiService
+        .createTodo(data.title, data.description)
+        .subscribe((data: any) => {
+          console.log(data);
+          this.todos.push(data);
+          this.filteredTodos = this.todos;
+        });
     });
   }
 
   statusChanged(ev: MatSelectChange, todoId: number, index: number) {
-    const value = ev.value;
-    /*this.apiService.updateTodoStatus(todoId, value).subscribe((data: any) => {
+    const value: string = ev.value;
+    this.apiService.updateTodoStatus(value, todoId).subscribe((data: any) => {
       this.todos[index] = data;
       this.filteredTodos = this.todos;
-    });*/
+    });
   }
 
   delete(id: number) {
     if (confirm('Do you want to remove this todo?')) {
-      /*this.apiService.deleteTodo(id).subscribe( res => {
-
+      this.apiService.deleteTask(id).subscribe((res) => {
+        //@ts-ignore
         if (res.success) {
-          this.todos = this.todos.filter((t:any) => t.id !== id);
+          this.todos = this.todos.filter((t: any) => t.id !== id);
           this.filteredTodos = this.todos;
-          ))
         }
-      })*/
+      });
     }
   }
 }

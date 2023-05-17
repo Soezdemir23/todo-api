@@ -24,6 +24,7 @@ import { RegisterComponent } from './register/register.component';
 import { TodoComponent } from './todo/todo.component';
 import { ToastrModule } from 'ngx-toastr';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     RegisterComponent,
     TodoComponent,
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -58,6 +60,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
       progressBar: true,
       progressAnimation: 'increasing',
     }),
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

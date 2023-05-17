@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Injectable,
   InternalServerErrorException,
   UnauthorizedException,
@@ -35,7 +36,7 @@ export class AuthService {
     try {
       const userExists = await this.userRepo.findOne({ where: { username } });
       if (userExists) {
-        throw new InternalServerErrorException(
+        throw new BadRequestException(
           'User already exists. Please choose a different username',
         );
       }

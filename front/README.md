@@ -19,7 +19,7 @@ The frontend of the application
       + Register
       + Login
   + shows the username and welcome and stuff
-  + logout 
++ navbar with a list of links based on userstatus
 
 ### Main
 
